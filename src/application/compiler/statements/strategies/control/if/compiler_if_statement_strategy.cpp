@@ -50,26 +50,26 @@ void CompilerIfStatementStrategy::cmd_if(shared_ptr<CompilerContext> context) {
             break;
           }
 
-        } else if (lexeme->value == "T.") {
+        } else if (lexeme->value == "TH") {
           tt = action->actions.size();
           if (tt) {
             last_action = action->actions[tt - 1];
             last_lexeme = last_action->lexeme;
             isLastActionGoto = (last_lexeme->type == Lexeme::type_keyword &&
-                                last_lexeme->value == "G.");
+                                last_lexeme->value == "GT");
           }
 
           if (!evaluator.evalActions(action)) break;
 
-        } else if (lexeme->value == "G.") {
+        } else if (lexeme->value == "GT") {
           isLastActionGoto = true;
 
           if (!evaluator.evalAction(action)) break;
 
-        } else if (lexeme->value == "GS.") {
+        } else if (lexeme->value == "GS") {
           if (!evaluator.evalAction(action)) break;
 
-        } else if (lexeme->value == "E.") {
+        } else if (lexeme->value == "EL") {
           if (!isLastActionGoto) {
             // jp ENDIF
             mark_endif = fixup.addMark();
@@ -84,7 +84,7 @@ void CompilerIfStatementStrategy::cmd_if(shared_ptr<CompilerContext> context) {
             last_action = action->actions[0];
             last_lexeme = last_action->lexeme;
             isLastActionGoto = (last_lexeme->type == Lexeme::type_keyword &&
-                                last_lexeme->value == "G.");
+                                last_lexeme->value == "GT");
           }
 
           if (isLastActionGoto) {

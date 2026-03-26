@@ -31,8 +31,8 @@ bool IfStatementStrategy::parseStatement(shared_ptr<ParserContext> context,
   while ((next_lexeme = statement->getNextLexeme())) {
     switch (state) {
       case 0: {
-        if (next_lexeme->isKeyword("T.") || next_lexeme->isKeyword("G.") ||
-            next_lexeme->isKeyword("GS.")) {
+        if (next_lexeme->isKeyword("TH") || next_lexeme->isKeyword("GT") ||
+            next_lexeme->isKeyword("GS")) {
           if (parm->getLexemeCount()) {
             parm->setLexemeBOF();
             if (!evaluateExpression(context, parm)) {
@@ -60,7 +60,7 @@ bool IfStatementStrategy::parseStatement(shared_ptr<ParserContext> context,
 
           continue;
 
-        } else if (next_lexeme->isKeyword("E.")) {
+        } else if (next_lexeme->isKeyword("EL")) {
           context->logger->error("ELSE without a THEN/GOTO/GOSUB");
           context->eval_expr_error = true;
           return false;
@@ -77,7 +77,7 @@ bool IfStatementStrategy::parseStatement(shared_ptr<ParserContext> context,
       case 2: {
         if (testIf) {
           testIf = false;
-          if (next_lexeme->isKeyword("I.")) {
+          if (next_lexeme->isKeyword("IF")) {
             if (parm->getLexemeCount()) {
               parm->setLexemeBOF();
               if (!evaluateExpression(context, parm)) {
@@ -97,7 +97,7 @@ bool IfStatementStrategy::parseStatement(shared_ptr<ParserContext> context,
             skipEmptyStmtCheck = true;
             testGotoGosub = false;
             continue;
-          } else if (next_lexeme->isKeyword("T.")) {
+          } else if (next_lexeme->isKeyword("TH")) {
             context->logger->error("Duplicated THEN in an IF command");
             context->eval_expr_error = true;
             return false;
@@ -107,29 +107,29 @@ bool IfStatementStrategy::parseStatement(shared_ptr<ParserContext> context,
         if (testGotoGosub) {
           testGotoGosub = false;
           if (next_lexeme->isLiteralNumeric()) {
-            if (last_lexeme->isKeyword("T.") ||
-                last_lexeme->isKeyword("E.")) {
-              action = make_shared<ActionNode>("G.");
+            if (last_lexeme->isKeyword("TH") ||
+                last_lexeme->isKeyword("EL")) {
+              action = make_shared<ActionNode>("GT");
               context->pushActionRoot(action);
               context->pushActionFromLexeme(next_lexeme);
               context->popActionRoot();
-            } else if (last_lexeme->isKeyword("G.")) {
+            } else if (last_lexeme->isKeyword("GT")) {
               if (state == 1)
-                last_lexeme->value = "T.";
+                last_lexeme->value = "TH";
               else
-                last_lexeme->value = "E.";
+                last_lexeme->value = "EL";
               last_lexeme->name = last_lexeme->value;
-              action = make_shared<ActionNode>("G.");
+              action = make_shared<ActionNode>("GT");
               context->pushActionRoot(action);
               context->pushActionFromLexeme(next_lexeme);
               context->popActionRoot();
-            } else if (last_lexeme->isKeyword("GS.")) {
+            } else if (last_lexeme->isKeyword("GS")) {
               if (state == 1)
-                last_lexeme->value = "T.";
+                last_lexeme->value = "TH";
               else
-                last_lexeme->value = "E.";
+                last_lexeme->value = "EL";
               last_lexeme->name = last_lexeme->value;
-              action = make_shared<ActionNode>("GS.");
+              action = make_shared<ActionNode>("GS");
               context->pushActionRoot(action);
               context->pushActionFromLexeme(next_lexeme);
               context->popActionRoot();
@@ -146,7 +146,7 @@ bool IfStatementStrategy::parseStatement(shared_ptr<ParserContext> context,
           }
         }
 
-        if (next_lexeme->isSeparator(":") || next_lexeme->isKeyword("E.")) {
+        if (next_lexeme->isSeparator(":") || next_lexeme->isKeyword("EL")) {
           testIf = true;
 
           if (parm->getLexemeCount()) {
@@ -163,7 +163,7 @@ bool IfStatementStrategy::parseStatement(shared_ptr<ParserContext> context,
             }
           }
 
-          if (next_lexeme->isKeyword("E.")) {
+          if (next_lexeme->isKeyword("EL")) {
             context->popActionRoot();
 
             if (state == 1) {
@@ -209,7 +209,7 @@ bool IfStatementStrategy::parseStatement(shared_ptr<ParserContext> context,
     if (testGotoGosub) {
       next_lexeme = parm->getFirstLexeme();
       if (next_lexeme->isLiteralNumeric()) {
-        action = make_shared<ActionNode>("G.");
+        action = make_shared<ActionNode>("GT");
         context->pushActionRoot(action);
         context->pushActionFromLexeme(next_lexeme);
         context->popActionRoot();

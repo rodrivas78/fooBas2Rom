@@ -49,7 +49,7 @@ bool FileStatementStrategy::parseOpen(shared_ptr<ParserContext> context,
       case 1: {
         s = (char*)next_lexeme->value.c_str();
 
-        if (next_lexeme->isKeyword("F.")) {
+        if (next_lexeme->isKeyword("FO")) {
           state = 2;
           continue;
         } else if (next_lexeme->value == "AS") {
