@@ -48,7 +48,7 @@ bool ParserLineEvaluator::evaluateLine(
       while ((lexeme = lexerLine->getNextLexeme())) {
         lexeme = ctx->coalesceSymbols(lexeme);
 
-        if (lexeme->isKeyword("IF")) {
+        if (lexeme->isKeyword("I.")) {
           if_count++;
         }
 
@@ -157,7 +157,7 @@ bool ParserLineEvaluator::evaluateStatement(
     strategy = statementStrategyFactory->getStrategyByKeyword(lexeme->value);
     if (strategy) {
       result = strategy->execute(ctx, statement, lexeme);
-      if (lexeme->value == "IF") return result;
+      if (lexeme->value == "I.") return result;
     } else {
       ctx->logger->error("Invalid keyword / identifier");
       result = false;

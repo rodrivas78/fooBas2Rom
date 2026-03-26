@@ -52,7 +52,7 @@ bool OnStatementStrategy::parseOnGotoGosub(
   while ((next_lexeme = statement->getNextLexeme())) {
     switch (state) {
       case 0: {
-        if (next_lexeme->isKeyword("GOSUB") || next_lexeme->isKeyword("GOTO")) {
+        if (next_lexeme->isKeyword("GS.") || next_lexeme->isKeyword("G.")) {
           if (!parm->getLexemeCount()) {
             return false;
           }
@@ -138,7 +138,7 @@ bool OnStatementStrategy::parseOnInterval(
           }
         }
 
-        if (next_lexeme->isKeyword("GOSUB")) {
+        if (next_lexeme->isKeyword("GS.")) {
           if (!parm->getLexemeCount()) {
             return false;
           }
@@ -204,7 +204,7 @@ bool OnStatementStrategy::parseOnKey(shared_ptr<ParserContext> context,
   while ((next_lexeme = statement->getNextLexeme())) {
     switch (state) {
       case 0: {
-        if (next_lexeme->isKeyword("GOSUB")) {
+        if (next_lexeme->isKeyword("GS.")) {
           action = make_shared<ActionNode>(next_lexeme);
           context->pushActionRoot(action);
 

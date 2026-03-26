@@ -392,8 +392,8 @@ TEST_SUITE("ParserStatementStrategyFactory") {
 
         "REM",    "CLS",      "END",    "BEEP",    "RANDOMIZE", "'",
 
-        "WIDTH",  "CLEAR",    "ERASE",  "LOCATE",  "DRAW",      "GOTO",
-        "GOSUB",  "RETURN",   "SOUND",  "RESTORE", "RESUME",    "READ",
+        "WIDTH",  "CLEAR",    "ERASE",  "L.",  "DRAW",      "G.",
+        "GS.",  "R.",   "SOUND",  "RESTORE", "RESUME",    "READ",
         "IREAD",  "IRESTORE", "POKE",   "IPOKE",   "VPOKE",     "OUT",
         "SWAP",   "WAIT",     "SEED",   "BLOAD",   "PLAY",
 
@@ -415,7 +415,7 @@ TEST_SUITE("ParserStatementStrategyFactory") {
 
         "DEF",    "DEFINT",   "DEFSTR", "DEFSNG",  "DEFDBL",
 
-        "IF",     "FOR",      "NEXT",
+        "I.",     "F.",      "N.",
 
         "PSET",   "PRESET",   "LINE",   "CIRCLE",  "PAINT",     "COPY"};
 
@@ -765,7 +765,7 @@ TEST_SUITE("NextStatementStrategy") {
     shared_ptr<ParserContext> ctx = createContext();
     NextStatementStrategy strategy;
 
-    setActionRoot(ctx, "NEXT");
+    setActionRoot(ctx, "N.");
 
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
     line->addLexeme(id("I"));
@@ -774,7 +774,7 @@ TEST_SUITE("NextStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("NEXT"));
+    bool result = strategy.execute(ctx, line, kw("N."));
 
     CHECK(result == true);
   }
@@ -798,7 +798,7 @@ TEST_SUITE("ForStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("FOR"));
+    bool result = strategy.execute(ctx, line, kw("F."));
 
     CHECK(result == true);
   }
@@ -817,13 +817,13 @@ TEST_SUITE("IfStatementStrategy") {
     line->addLexeme(id("A"));
     line->addLexeme(op("="));
     line->addLexeme(num("1"));
-    line->addLexeme(kw("THEN"));
+    line->addLexeme(kw("T."));
     line->addLexeme(kw("PRINT"));
     line->addLexeme(lit("\"A\""));
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("IF"));
+    bool result = strategy.execute(ctx, line, kw("I."));
 
     CHECK(result == true);
   }
@@ -949,7 +949,7 @@ TEST_SUITE("FileStatementStrategy") {
 
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
     line->addLexeme(lit("\"A\""));
-    line->addLexeme(kw("FOR"));
+    line->addLexeme(kw("F."));
     line->addLexeme(kw("INPUT"));
     line->addLexeme(kw("AS"));
     line->addLexeme(sep("#"));
@@ -1180,7 +1180,7 @@ TEST_SUITE("OnStatementStrategy") {
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
     line->addLexeme(kw("ON"));
     line->addLexeme(num("1"));
-    line->addLexeme(kw("GOTO"));
+    line->addLexeme(kw("G."));
     line->addLexeme(num("10"));
 
     line->getFirstLexeme();

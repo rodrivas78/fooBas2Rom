@@ -28,12 +28,12 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
   strategies["RANDOMIZE"] = &randomizeStrategy;
 
   strategies["END"] = &endStrategy;
-  strategies["GOTO"] = &gotoStrategy;
-  strategies["GOSUB"] = &gosubStrategy;
-  strategies["RETURN"] = &returnStrategy;
-  strategies["IF"] = &ifStrategy;
-  strategies["FOR"] = &forStrategy;
-  strategies["NEXT"] = &nextStrategy;
+  strategies["G."] = &gotoStrategy;
+  strategies["GS."] = &gosubStrategy;
+  strategies["R."] = &returnStrategy;
+  strategies["I."] = &ifStrategy;
+  strategies["F."] = &forStrategy;
+  strategies["N."] = &nextStrategy;
   strategies["ON"] = &onStrategy;
   strategies["INTERVAL"] = &intervalStrategy;
   strategies["STOP"] = &stopStrategy;
@@ -64,7 +64,7 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
 
   strategies["PLAY"] = &playStrategy;
   strategies["DRAW"] = &drawStrategy;
-  strategies["LOCATE"] = &locateStrategy;
+  strategies["L."] = &locateStrategy;
   strategies["SCREEN"] = &screenStrategy;
   strategies["WIDTH"] = &widthStrategy;
   strategies["COLOR"] = &colorStrategy;

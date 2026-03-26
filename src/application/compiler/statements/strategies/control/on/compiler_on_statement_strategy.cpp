@@ -110,7 +110,7 @@ void CompilerOnStatementStrategy::cmd_on_interval(
 
     sub_action = action->actions[1];
     lexeme = sub_action->lexeme;
-    if (lexeme->value != "GOSUB") {
+    if (lexeme->value != "GS.") {
       context->syntaxError("GOSUB is missing in ON INTERVAL");
       return;
     }
@@ -169,7 +169,7 @@ void CompilerOnStatementStrategy::cmd_on_key(
 
   action = action->actions[0];
   lexeme = action->lexeme;
-  if (lexeme->value != "GOSUB") {
+  if (lexeme->value != "GS.") {
     context->syntaxError("GOSUB parameters is missing in ON KEY");
     return;
   }
@@ -246,7 +246,7 @@ void CompilerOnStatementStrategy::cmd_on_sprite(
 
   action = action->actions[0];
   lexeme = action->lexeme;
-  if (lexeme->value != "GOSUB") {
+  if (lexeme->value != "GS.") {
     context->syntaxError("GOSUB parameters is missing in ON SPRITE");
     return;
   }
@@ -310,7 +310,7 @@ void CompilerOnStatementStrategy::cmd_on_stop(
 
   action = action->actions[0];
   lexeme = action->lexeme;
-  if (lexeme->value != "GOSUB") {
+  if (lexeme->value != "GS.") {
     context->syntaxError("GOSUB parameters is missing in ON STOP");
     return;
   }
@@ -374,7 +374,7 @@ void CompilerOnStatementStrategy::cmd_on_strig(
 
   action = action->actions[0];
   lexeme = action->lexeme;
-  if (lexeme->value != "GOSUB") {
+  if (lexeme->value != "GS.") {
     context->syntaxError("GOSUB parameters is missing in ON STRIG");
     return;
   }
@@ -493,7 +493,7 @@ void CompilerOnStatementStrategy::cmd_on_goto_gosub(
           sub_lexeme->value.erase(0, 1);
         }
 
-        if (lexeme->value == "GOTO") {
+        if (lexeme->value == "G.") {
           if (opts.megaROM) {
             // ld a, (TEMP)
             cpu.addLdAii(def_TEMP);
