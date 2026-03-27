@@ -13,7 +13,7 @@ bool OnStatementStrategy::parseOn(shared_ptr<ParserContext> context,
 
     if (next_lexeme->isKeyword("ERROR")) {
       return parseOnError(context, statement);
-    } else if (next_lexeme->isKeyword("INTERVAL")) {
+    } else if (next_lexeme->isKeyword("IN")) {
       context->has_traps = true;
       return parseOnInterval(context, statement);
     } else if (next_lexeme->isKeyword("KEY")) {
@@ -361,7 +361,7 @@ bool OnStatementStrategy::execute(shared_ptr<ParserContext> context,
   if (!lexeme || lexeme->type != Lexeme::type_keyword) return false;
 
   if (lexeme->value == "ON") return parseOn(context, statement);
-  if (lexeme->value == "INTERVAL") return parseInterval(context, statement);
+  if (lexeme->value == "IN") return parseInterval(context, statement);
   if (lexeme->value == "STOP") return parseStop(context, statement);
   if (lexeme->value == "KEY") return parseKey(context, statement);
   if (lexeme->value == "SG") return parseStrig(context, statement);

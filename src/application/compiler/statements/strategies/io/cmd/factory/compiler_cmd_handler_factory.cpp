@@ -25,8 +25,8 @@ CompilerCmdHandlerFactory::CompilerCmdHandlerFactory() {
   handlers["ENASCR"] = &enascrHandler;
   handlers["KEYCLKOFF"] = &keyclkoffHandler;
   handlers["MUTE"] = &muteHandler;
-  handlers["PLAY"] = &playHandler;
-  handlers["DRAW"] = &drawHandler;
+  handlers["PL"] = &playHandler;
+  handlers["DW"] = &drawHandler;
   handlers["CLIP"] = &clipHandler;
   handlers["PT3LOAD"] = &pt3Handler;
   handlers["PT3PLAY"] = &pt3Handler;
@@ -46,7 +46,7 @@ CompilerCmdHandlerFactory::CompilerCmdHandlerFactory() {
   handlers["CLRSCR"] = &clrscrHandler;
   handlers["CLRKEY"] = &clrkeyHandler;
   handlers["PAGE"] = &pageHandler;
-  handlers["RESTORE"] = &restoreHandler;
+  handlers["RS"] = &restoreHandler;
   handlers["TURBO"] = &turboHandler;
 }
 

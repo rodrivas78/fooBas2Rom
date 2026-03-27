@@ -18,7 +18,7 @@ TEST_SUITE("Domain") {
     Lexeme kw(Lexeme::type_keyword, Lexeme::subtype_any, "PRINT");
     CHECK(kw.isKeyword() == true);
 
-    Lexeme fn(Lexeme::type_keyword, Lexeme::subtype_function, "TIME");
+    Lexeme fn(Lexeme::type_keyword, Lexeme::subtype_function, "TM");
     CHECK(fn.isFunction() == true);
 
     Lexeme op(Lexeme::type_keyword, Lexeme::subtype_any, "AND");

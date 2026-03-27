@@ -21,7 +21,7 @@ void CompilerGetStatementStrategy::cmd_get(
     if (next_lexeme->type == Lexeme::type_keyword) {
       if (next_lexeme->value == "DATE") {
         cmd_get_date(context);
-      } else if (next_lexeme->value == "TIME") {
+      } else if (next_lexeme->value == "TM") {
         cmd_get_time(context);
       } else if (next_lexeme->value == "TILE") {
         cmd_get_tile(context);

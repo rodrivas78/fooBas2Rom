@@ -72,14 +72,14 @@ bool FileStatementStrategy::parseOpen(shared_ptr<ParserContext> context,
       case 2: {
         s = (char*)next_lexeme->value.c_str();
 
-        if (next_lexeme->value == "INPUT" || next_lexeme->value == "OUT" ||
+        if (next_lexeme->value == "IP" || next_lexeme->value == "OUT" ||
             next_lexeme->value == "APP") {
           context->pushActionFromLexeme(next_lexeme);
           context->popActionRoot();
           continue;
         } else if (next_lexeme->type == Lexeme::type_keyword &&
                    (next_lexeme->value == "PU" ||
-                    next_lexeme->value == "END")) {
+                    next_lexeme->value == "EN")) {
           continue;
         } else if (next_lexeme->value == "AS") {
           state = 4;

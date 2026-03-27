@@ -22,7 +22,7 @@ bool ColorStatementStrategy::parseColorRgb(
           continue;
 
         } else if (next_lexeme->isKeyword("NEW") ||
-                   next_lexeme->isKeyword("RESTORE")) {
+                   next_lexeme->isKeyword("RS")) {
           context->pushActionFromLexeme(next_lexeme);
           return true;
 

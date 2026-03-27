@@ -23,7 +23,7 @@ void CompilerLineStatementStrategy::cmd_line(
   if (t) {
     action = context->current_action->actions[0];
     lexeme = action->lexeme;
-    if (lexeme->type == Lexeme::type_keyword && lexeme->value == "INPUT") {
+    if (lexeme->type == Lexeme::type_keyword && lexeme->value == "IP") {
       CompilerInputStatementStrategy inputStmt;
       context->current_action = action;
       if (!inputStmt.executeLineInput(context)) {

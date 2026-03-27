@@ -14,20 +14,20 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
 
   strategies["CLEAR"] = &clearStrategy;
   strategies["DEF"] = &defStrategy;
-  strategies["DEFINT"] = &defintStrategy;
+  strategies["DI"] = &defintStrategy;
   strategies["DEFSNG"] = &defsngStrategy;
   strategies["DEFDBL"] = &defdblStrategy;
   strategies["DEFSTR"] = &defstrStrategy;
   strategies["DEFUSR"] = &defusrStrategy;
   strategies["CL"] = &clsStrategy;
-  strategies["BEEP"] = &beepStrategy;
+  strategies["BP"] = &beepStrategy;
   strategies["LET"] = &letStrategy;
-  strategies["TIME"] = &timeStrategy;
-  strategies["DIM"] = &dimStrategy;
+  strategies["TM"] = &timeStrategy;
+  strategies["DM"] = &dimStrategy;
   strategies["REDIM"] = &redimStrategy;
-  strategies["RANDOMIZE"] = &randomizeStrategy;
+  strategies["RN"] = &randomizeStrategy;
 
-  strategies["END"] = &endStrategy;
+  strategies["EN"] = &endStrategy;
   strategies["GT"] = &gotoStrategy;
   strategies["GS"] = &gosubStrategy;
   strategies["RT"] = &returnStrategy;
@@ -35,12 +35,12 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
   strategies["FO"] = &forStrategy;
   strategies["NX"] = &nextStrategy;
   strategies["ON"] = &onStrategy;
-  strategies["INTERVAL"] = &intervalStrategy;
+  strategies["IN"] = &intervalStrategy;
   strategies["STOP"] = &stopStrategy;
 
   strategies["PRINT"] = &printStrategy;
-  strategies["INPUT"] = &inputStrategy;
-  strategies["SOUND"] = &soundStrategy;
+  strategies["IP"] = &inputStrategy;
+  strategies["SD"] = &soundStrategy;
   strategies["OUT"] = &outStrategy;
   strategies["PK"] = &pokeStrategy;
   strategies["VP"] = &vpokeStrategy;
@@ -49,9 +49,9 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
   strategies["IDATA"] = &idataStrategy;
   strategies["RD"] = &readStrategy;
   strategies["IREAD"] = &ireadStrategy;
-  strategies["RESTORE"] = &restoreStrategy;
+  strategies["RS"] = &restoreStrategy;
   strategies["IRESTORE"] = &irestoreStrategy;
-  strategies["RESUME"] = &resumeStrategy;
+  strategies["RM"] = &resumeStrategy;
   strategies["WAIT"] = &waitStrategy;
   strategies["SWAP"] = &swapStrategy;
   strategies["CALL"] = &callStrategy;
@@ -62,17 +62,17 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
   strategies["CLOSE"] = &closeStrategy;
   strategies["BLOAD"] = &bloadStrategy;
 
-  strategies["PLAY"] = &playStrategy;
-  strategies["DRAW"] = &drawStrategy;
+  strategies["PL"] = &playStrategy;
+  strategies["DW"] = &drawStrategy;
   strategies["LC"] = &locateStrategy;
   strategies["SN"] = &screenStrategy;
   strategies["WIDTH"] = &widthStrategy;
   strategies["CR"] = &colorStrategy;
   strategies["PS"] = &psetStrategy;
   strategies["PRESET"] = &presetStrategy;
-  strategies["LINE"] = &lineStrategy;
+  strategies["LN"] = &lineStrategy;
   strategies["PAINT"] = &paintStrategy;
-  strategies["CIRCLE"] = &circleStrategy;
+  strategies["CI"] = &circleStrategy;
   strategies["COPY"] = &copyStrategy;
   strategies["PU"] = &putStrategy;
   strategies["GET"] = &getStrategy;

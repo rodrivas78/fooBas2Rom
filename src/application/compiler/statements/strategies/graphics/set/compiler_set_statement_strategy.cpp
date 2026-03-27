@@ -48,7 +48,7 @@ void CompilerSetStatementStrategy::cmd_set(
         next_lexeme->value == "ADJUST") {
       cmd_set_adjust(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
-               next_lexeme->value == "BEEP") {
+               next_lexeme->value == "BP") {
       cmd_set_beep(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
                next_lexeme->value == "DATE") {
@@ -70,7 +70,7 @@ void CompilerSetStatementStrategy::cmd_set(
                next_lexeme->value == "SCROLL") {
       cmd_set_scroll(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
-               next_lexeme->value == "TIME") {
+               next_lexeme->value == "TM") {
       cmd_set_time(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
                next_lexeme->value == "TITLE") {

@@ -12,7 +12,7 @@ int TimeCompilerFunctionStrategy::execute(shared_ptr<CompilerContext> context,
 
   (void)result;
 
-  if (action->lexeme->value != "TIME") return Lexeme::subtype_unknown;
+  if (action->lexeme->value != "TM") return Lexeme::subtype_unknown;
 
   auto& cpu = *context->cpu;
 

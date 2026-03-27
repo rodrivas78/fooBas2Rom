@@ -57,7 +57,7 @@ void CompilerOpenStatementStrategy::cmd_open(
           } else if (lexeme->value == "APP") {
             // ld a, 8     ; append mode
             cpu.addLdA(0x08);
-          } else if (lexeme->value == "INPUT") {
+          } else if (lexeme->value == "IP") {
             // ld a, 1     ; input mode
             cpu.addLdA(0x01);
           } else {

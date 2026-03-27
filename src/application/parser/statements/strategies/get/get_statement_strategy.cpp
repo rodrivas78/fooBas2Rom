@@ -51,7 +51,7 @@ bool GetStatementStrategy::parseStatement(
     context->pushActionRoot(action);
 
     if (next_lexeme->type == Lexeme::type_keyword) {
-      if (next_lexeme->value == "DATE" || next_lexeme->value == "TIME") {
+      if (next_lexeme->value == "DATE" || next_lexeme->value == "TM") {
         GenericStatementStrategy genericStrategy;
         result = genericStrategy.parseStatement(context, statement);
       } else if (next_lexeme->value == "TILE") {

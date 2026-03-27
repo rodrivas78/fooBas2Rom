@@ -8,7 +8,7 @@
 CompilerFunctionStrategyFactory::CompilerFunctionStrategyFactory() {
   strategies["NOOPERATION"] = &noopStrategy;
 
-  strategies["TIME"] = &timeStrategy;
+  strategies["TM"] = &timeStrategy;
   strategies["POS"] = &posStrategy;
   strategies["LPOS"] = &lposStrategy;
   strategies["CSRLIN"] = &csrlinStrategy;
@@ -44,7 +44,7 @@ CompilerFunctionStrategyFactory::CompilerFunctionStrategyFactory() {
   strategies["INP"] = &inpStrategy;
   strategies["EOF"] = &eofStrategy;
   strategies["PSG"] = &psgStrategy;
-  strategies["PLAY"] = &playStrategy;
+  strategies["PL"] = &playStrategy;
   strategies["STICK"] = &stickStrategy;
   strategies["SG"] = &strigStrategy;
   strategies["PAD"] = &padStrategy;

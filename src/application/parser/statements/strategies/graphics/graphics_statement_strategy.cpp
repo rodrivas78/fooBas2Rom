@@ -128,7 +128,7 @@ bool GraphicsStatementStrategy::parseLine(
 
     switch (state) {
       case 0: {
-        if (next_lexeme->isKeyword("INPUT")) {
+        if (next_lexeme->isKeyword("IP")) {
           context->has_input = true;
           context->pushActionFromLexeme(next_lexeme);
           PrintStatementStrategy printStrategy;
@@ -842,8 +842,8 @@ bool GraphicsStatementStrategy::execute(shared_ptr<ParserContext> context,
                                         shared_ptr<Lexeme> lexeme) {
   if (lexeme->value == "PS" || lexeme->value == "PRESET")
     return parsePset(context, statement);
-  if (lexeme->value == "LINE") return parseLine(context, statement);
-  if (lexeme->value == "CIRCLE") return parseCircle(context, statement);
+  if (lexeme->value == "LN") return parseLine(context, statement);
+  if (lexeme->value == "CI") return parseCircle(context, statement);
   if (lexeme->value == "PAINT") return parsePaint(context, statement);
   return parseCopy(context, statement);
 }

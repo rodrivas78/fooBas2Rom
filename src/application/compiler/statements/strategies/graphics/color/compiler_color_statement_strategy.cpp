@@ -35,7 +35,7 @@ void CompilerColorStatementStrategy::cmd_color(
         cpu.addEI();
         // skip:
 
-      } else if (lexeme->value == "RESTORE") {
+      } else if (lexeme->value == "RS") {
         // ld a, (VERSION)
         cpu.addLdAii(def_VERSION);
         // and a

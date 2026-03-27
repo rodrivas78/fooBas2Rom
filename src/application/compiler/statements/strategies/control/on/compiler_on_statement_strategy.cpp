@@ -24,7 +24,7 @@ void CompilerOnStatementStrategy::cmd_on(shared_ptr<CompilerContext> context) {
         next_lexeme->value == "ERROR") {
       cmd_on_error(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
-               next_lexeme->value == "INTERVAL") {
+               next_lexeme->value == "IN") {
       cmd_on_interval(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
                next_lexeme->value == "KEY") {

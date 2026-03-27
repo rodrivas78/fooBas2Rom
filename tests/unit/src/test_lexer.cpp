@@ -209,7 +209,7 @@ TEST_SUITE("Lexer") {
     REQUIRE(kwPrint != nullptr);
     CHECK(kwPrint->type == Lexeme::type_keyword);
 
-    shared_ptr<Lexeme> kwTime = findLexemeByValue(line, "TIME");
+    shared_ptr<Lexeme> kwTime = findLexemeByValue(line, "TM");
     REQUIRE(kwTime != nullptr);
     CHECK(kwTime->subtype == Lexeme::subtype_function);
 

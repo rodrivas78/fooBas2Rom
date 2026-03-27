@@ -301,7 +301,7 @@ void CompilerVariableEmitter::addTempStr(bool atHL) {
 bool CompilerVariableEmitter::addAssignment(shared_ptr<ActionNode> action) {
   auto& cpu = *context->cpu;
   if (action->lexeme->type == Lexeme::type_keyword) {
-    if (action->lexeme->value == "TIME") {
+    if (action->lexeme->value == "TM") {
       // ld (0xFC9E), hl    ; JIFFY
       cpu.addLdiiHL(0xFC9E);
 

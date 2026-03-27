@@ -141,7 +141,7 @@ shared_ptr<ActionNode> ParserContext::pushActionFromLexeme(
 
   if (lexeme->type == Lexeme::type_operator ||
       lexeme->type == Lexeme::type_separator ||
-      (lexeme->type == Lexeme::type_keyword && lexeme->value != "TIME" &&
+      (lexeme->type == Lexeme::type_keyword && lexeme->value != "TM" &&
        lexeme->value != "INKEY" && lexeme->value != "INKEY$" &&
        lexeme->value != "MAXFILES" && lexeme->value != "ERL" &&
        lexeme->value != "ERR") ||

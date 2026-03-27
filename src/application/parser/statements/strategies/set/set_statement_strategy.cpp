@@ -323,10 +323,10 @@ bool SetStatementStrategy::parseStatement(
     context->pushActionRoot(action);
 
     if (next_lexeme->type == Lexeme::type_keyword) {
-      if (next_lexeme->value == "BEEP" || next_lexeme->value == "DATE" ||
+      if (next_lexeme->value == "BP" || next_lexeme->value == "DATE" ||
           next_lexeme->value == "PAGE" || next_lexeme->value == "PASSWORD" ||
           next_lexeme->value == "PROMPT" || next_lexeme->value == "SN" ||
-          next_lexeme->value == "SCROLL" || next_lexeme->value == "TIME" ||
+          next_lexeme->value == "SCROLL" || next_lexeme->value == "TM" ||
           next_lexeme->value == "TITLE" || next_lexeme->value == "VIDEO" ||
           next_lexeme->value == "FONT") {
         GenericStatementStrategy genericStrategy;

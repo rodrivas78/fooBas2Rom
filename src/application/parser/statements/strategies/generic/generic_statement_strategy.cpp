@@ -53,7 +53,7 @@ bool GenericStatementStrategy::execute(shared_ptr<ParserContext> context,
                                        shared_ptr<LexerLineContext> statement,
                                        shared_ptr<Lexeme> lexeme) {
   if (lexeme->value == "BLOAD") context->resourceCount++;
-  if (lexeme->value == "PLAY") context->has_play = true;
+  if (lexeme->value == "PL") context->has_play = true;
 
   return parseStatement(context, statement);
 }

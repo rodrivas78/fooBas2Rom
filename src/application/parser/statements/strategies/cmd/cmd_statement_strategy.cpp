@@ -28,7 +28,7 @@ bool CmdStatementStrategy::parseStatement(
 
   if (lexeme->value == "MTF") context->has_mtf = true;
 
-  if (lexeme->value == "RESTORE") context->has_resource_restore = true;
+  if (lexeme->value == "RS") context->has_resource_restore = true;
 
   GenericStatementStrategy genericStrategy;
   bool result = genericStrategy.parseStatement(context, statement);

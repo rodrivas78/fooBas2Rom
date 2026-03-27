@@ -3,22 +3,22 @@
 ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["REM"] = &noopStrategy;
   strategies["CL"] = &noopStrategy;
-  strategies["END"] = &noopStrategy;
-  strategies["BEEP"] = &noopStrategy;
-  strategies["RANDOMIZE"] = &noopStrategy;
+  strategies["EN"] = &noopStrategy;
+  strategies["BP"] = &noopStrategy;
+  strategies["RN"] = &noopStrategy;
   strategies["'"] = &noopStrategy;
 
   strategies["WIDTH"] = &genericStrategy;
   strategies["CLEAR"] = &genericStrategy;
   strategies["ERASE"] = &genericStrategy;
   strategies["LC"] = &genericStrategy;
-  strategies["DRAW"] = &genericStrategy;
+  strategies["DW"] = &genericStrategy;
   strategies["GT"] = &genericStrategy;
   strategies["GS"] = &genericStrategy;
   strategies["RT"] = &genericStrategy;
-  strategies["SOUND"] = &genericStrategy;
-  strategies["RESTORE"] = &genericStrategy;
-  strategies["RESUME"] = &genericStrategy;
+  strategies["SD"] = &genericStrategy;
+  strategies["RS"] = &genericStrategy;
+  strategies["RM"] = &genericStrategy;
   strategies["RD"] = &genericStrategy;
   strategies["IREAD"] = &genericStrategy;
   strategies["IRESTORE"] = &genericStrategy;
@@ -30,14 +30,14 @@ ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["WAIT"] = &genericStrategy;
   strategies["SEED"] = &genericStrategy;
   strategies["BLOAD"] = &genericStrategy;
-  strategies["PLAY"] = &genericStrategy;
+  strategies["PL"] = &genericStrategy;
 
   strategies["LET"] = &letStrategy;
-  strategies["DIM"] = &dimStrategy;
+  strategies["DM"] = &dimStrategy;
   strategies["REDIM"] = &dimStrategy;
   strategies["PRINT"] = &printStrategy;
   strategies["?"] = &printStrategy;
-  strategies["INPUT"] = &inputStrategy;
+  strategies["IP"] = &inputStrategy;
   strategies["DT"] = &dataStrategy;
   strategies["IDATA"] = &idataStrategy;
   strategies["SN"] = &screenStrategy;
@@ -45,11 +45,11 @@ ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["BASE"] = &baseStrategy;
   strategies["VDP"] = &vdpStrategy;
   strategies["PU"] = &putStrategy;
-  strategies["TIME"] = &timeStrategy;
+  strategies["TM"] = &timeStrategy;
   strategies["SET"] = &setStrategy;
   strategies["GET"] = &getStrategy;
   strategies["ON"] = &onStrategy;
-  strategies["INTERVAL"] = &onStrategy;
+  strategies["IN"] = &onStrategy;
   strategies["STOP"] = &onStrategy;
   strategies["KEY"] = &onStrategy;
   strategies["SG"] = &onStrategy;
@@ -61,7 +61,7 @@ ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["CALL"] = &callStrategy;
   strategies["_"] = &callStrategy;
   strategies["DEF"] = &defStrategy;
-  strategies["DEFINT"] = &defStrategy;
+  strategies["DI"] = &defStrategy;
   strategies["DEFSTR"] = &defStrategy;
   strategies["DEFSNG"] = &defStrategy;
   strategies["DEFDBL"] = &defStrategy;
@@ -70,8 +70,8 @@ ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["NX"] = &nextStrategy;
   strategies["PS"] = &graphicsStrategy;
   strategies["PRESET"] = &graphicsStrategy;
-  strategies["LINE"] = &graphicsStrategy;
-  strategies["CIRCLE"] = &graphicsStrategy;
+  strategies["LN"] = &graphicsStrategy;
+  strategies["CI"] = &graphicsStrategy;
   strategies["PAINT"] = &graphicsStrategy;
   strategies["COPY"] = &graphicsStrategy;
 }

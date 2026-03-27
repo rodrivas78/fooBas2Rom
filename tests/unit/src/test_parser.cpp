@@ -390,34 +390,34 @@ TEST_SUITE("ParserStatementStrategyFactory") {
 
     std::vector<std::string> keywords = {
 
-        "REM",    "CL",      "END",    "BEEP",    "RANDOMIZE", "'",
+        "REM",    "CL",      "EN",    "BP",    "RN", "'",
 
-        "WIDTH",  "CLEAR",    "ERASE",  "LC",  "DRAW",      "GT",
-        "GS",  "RT",   "SOUND",  "RESTORE", "RESUME",    "RD",
+        "WIDTH",  "CLEAR",    "ERASE",  "LC",  "DW",      "GT",
+        "GS",  "RT",   "SD",  "RS", "RM",    "RD",
         "IREAD",  "IRESTORE", "PK",   "IPOKE",   "VP",     "OUT",
-        "SWAP",   "WAIT",     "SEED",   "BLOAD",   "PLAY",
+        "SWAP",   "WAIT",     "SEED",   "BLOAD",   "PL",
 
-        "LET",    "DIM",      "REDIM",
+        "LET",    "DM",      "REDIM",
 
-        "PRINT",  "?",        "INPUT",
+        "PRINT",  "?",        "IP",
 
         "DT",   "IDATA",
 
         "SN", "SP",   "BASE",   "VDP",
 
-        "PU",    "TIME",     "SET",    "GET",
+        "PU",    "TM",     "SET",    "GET",
 
-        "ON",     "INTERVAL", "STOP",   "KEY",     "SG",
+        "ON",     "IN", "STOP",   "KEY",     "SG",
 
         "CR",  "CMD",      "OPEN",   "CLOSE",   "MAXFILES",
 
         "CALL",   "_",
 
-        "DEF",    "DEFINT",   "DEFSTR", "DEFSNG",  "DEFDBL",
+        "DEF",    "DI",   "DEFSTR", "DEFSNG",  "DEFDBL",
 
         "IF",     "FO",      "NX",
 
-        "PS",   "PRESET",   "LINE",   "CIRCLE",  "PAINT",     "COPY"};
+        "PS",   "PRESET",   "LN",   "CI",  "PAINT",     "COPY"};
 
     for (const auto& kw : keywords) {
       CHECK(factory.getStrategyByKeyword(kw) != nullptr);
@@ -458,7 +458,7 @@ TEST_SUITE("ParserStatementStrategyFactory") {
     auto* base = factory.getStrategyByKeyword("ON");
 
     CHECK(base != nullptr);
-    CHECK(base == factory.getStrategyByKeyword("INTERVAL"));
+    CHECK(base == factory.getStrategyByKeyword("IN"));
     CHECK(base == factory.getStrategyByKeyword("STOP"));
     CHECK(base == factory.getStrategyByKeyword("KEY"));
     CHECK(base == factory.getStrategyByKeyword("SG"));
@@ -470,7 +470,7 @@ TEST_SUITE("ParserStatementStrategyFactory") {
     auto* base = factory.getStrategyByKeyword("DEF");
 
     CHECK(base != nullptr);
-    CHECK(base == factory.getStrategyByKeyword("DEFINT"));
+    CHECK(base == factory.getStrategyByKeyword("DI"));
     CHECK(base == factory.getStrategyByKeyword("DEFSTR"));
     CHECK(base == factory.getStrategyByKeyword("DEFSNG"));
     CHECK(base == factory.getStrategyByKeyword("DEFDBL"));
@@ -484,8 +484,8 @@ TEST_SUITE("ParserStatementStrategyFactory") {
     CHECK(base != nullptr);
 
     CHECK(base == factory.getStrategyByKeyword("PRESET"));
-    CHECK(base == factory.getStrategyByKeyword("LINE"));
-    CHECK(base == factory.getStrategyByKeyword("CIRCLE"));
+    CHECK(base == factory.getStrategyByKeyword("LN"));
+    CHECK(base == factory.getStrategyByKeyword("CI"));
     CHECK(base == factory.getStrategyByKeyword("PAINT"));
     CHECK(base == factory.getStrategyByKeyword("COPY"));
   }
@@ -734,7 +734,7 @@ TEST_SUITE("TimeStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("TIME"));
+    bool result = strategy.execute(ctx, line, kw("TM"));
 
     CHECK(result == true);
     CHECK(ctx->has_input == true);
@@ -839,7 +839,7 @@ TEST_SUITE("DefStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("DEFINT"));
+    bool result = strategy.execute(ctx, line, kw("DI"));
 
     CHECK(result == true);
     CHECK(ctx->deftbl[0] == 2);
@@ -868,7 +868,7 @@ TEST_SUITE("DimStatementStrategy") {
     shared_ptr<ParserContext> ctx = createContext();
     DimStatementStrategy strategy;
 
-    setActionRoot(ctx, "DIM");
+    setActionRoot(ctx, "DM");
 
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
     line->addLexeme(id("A"));
@@ -878,7 +878,7 @@ TEST_SUITE("DimStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("DIM"));
+    bool result = strategy.execute(ctx, line, kw("DM"));
 
     CHECK(result == true);
   }
@@ -887,14 +887,14 @@ TEST_SUITE("DimStatementStrategy") {
     shared_ptr<ParserContext> ctx = createContext();
     DimStatementStrategy strategy;
 
-    setActionRoot(ctx, "DIM");
+    setActionRoot(ctx, "DM");
 
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
     line->addLexeme(id("A"));
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("DIM"));
+    bool result = strategy.execute(ctx, line, kw("DM"));
 
     CHECK(result == false);
   }
@@ -950,7 +950,7 @@ TEST_SUITE("FileStatementStrategy") {
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
     line->addLexeme(lit("\"A\""));
     line->addLexeme(kw("FO"));
-    line->addLexeme(kw("INPUT"));
+    line->addLexeme(kw("IP"));
     line->addLexeme(kw("AS"));
     line->addLexeme(sep("#"));
     line->addLexeme(num("1"));

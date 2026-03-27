@@ -139,7 +139,7 @@ bool DefStatementStrategy::execute(shared_ptr<ParserContext> context,
                                    shared_ptr<Lexeme> lexeme) {
   int vartype = 0;
 
-  if (lexeme->value == "DEFINT")
+  if (lexeme->value == "DI")
     vartype = 2;
   else if (lexeme->value == "DEFSTR")
     vartype = 3;
