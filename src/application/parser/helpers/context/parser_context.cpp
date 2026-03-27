@@ -157,7 +157,7 @@ shared_ptr<ActionNode> ParserContext::pushActionFromLexeme(
 int ParserContext::gfxOperatorCode(shared_ptr<Lexeme> lexeme) {
   int result = -1;
 
-  if (lexeme->value == "PSET") {
+  if (lexeme->value == "PS") {
     result = 0;
   } else if (lexeme->value == "AND") {
     result = 1;

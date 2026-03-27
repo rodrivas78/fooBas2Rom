@@ -19,7 +19,7 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
   strategies["DEFDBL"] = &defdblStrategy;
   strategies["DEFSTR"] = &defstrStrategy;
   strategies["DEFUSR"] = &defusrStrategy;
-  strategies["CLS"] = &clsStrategy;
+  strategies["CL"] = &clsStrategy;
   strategies["BEEP"] = &beepStrategy;
   strategies["LET"] = &letStrategy;
   strategies["TIME"] = &timeStrategy;
@@ -42,12 +42,12 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
   strategies["INPUT"] = &inputStrategy;
   strategies["SOUND"] = &soundStrategy;
   strategies["OUT"] = &outStrategy;
-  strategies["POKE"] = &pokeStrategy;
-  strategies["VPOKE"] = &vpokeStrategy;
+  strategies["PK"] = &pokeStrategy;
+  strategies["VP"] = &vpokeStrategy;
   strategies["IPOKE"] = &ipokeStrategy;
-  strategies["DATA"] = &dataStrategy;
+  strategies["DT"] = &dataStrategy;
   strategies["IDATA"] = &idataStrategy;
-  strategies["READ"] = &readStrategy;
+  strategies["RD"] = &readStrategy;
   strategies["IREAD"] = &ireadStrategy;
   strategies["RESTORE"] = &restoreStrategy;
   strategies["IRESTORE"] = &irestoreStrategy;
@@ -65,21 +65,21 @@ CompilerStatementStrategyFactory::CompilerStatementStrategyFactory() {
   strategies["PLAY"] = &playStrategy;
   strategies["DRAW"] = &drawStrategy;
   strategies["LC"] = &locateStrategy;
-  strategies["SCREEN"] = &screenStrategy;
+  strategies["SN"] = &screenStrategy;
   strategies["WIDTH"] = &widthStrategy;
-  strategies["COLOR"] = &colorStrategy;
-  strategies["PSET"] = &psetStrategy;
+  strategies["CR"] = &colorStrategy;
+  strategies["PS"] = &psetStrategy;
   strategies["PRESET"] = &presetStrategy;
   strategies["LINE"] = &lineStrategy;
   strategies["PAINT"] = &paintStrategy;
   strategies["CIRCLE"] = &circleStrategy;
   strategies["COPY"] = &copyStrategy;
-  strategies["PUT"] = &putStrategy;
+  strategies["PU"] = &putStrategy;
   strategies["GET"] = &getStrategy;
   strategies["SET"] = &setStrategy;
   strategies["KEY"] = &keyStrategy;
-  strategies["STRIG"] = &strigStrategy;
-  strategies["SPRITE"] = &spriteStrategy;
+  strategies["SG"] = &strigStrategy;
+  strategies["SP"] = &spriteStrategy;
 }
 
 ICompilerStatementStrategy* CompilerStatementStrategyFactory::getByKeyword(

@@ -310,20 +310,20 @@ TEST_SUITE("CompilerStatementStrategyFactory") {
         "FILE",     "TEXT",
 
         "CLEAR",    "DEF",       "DEFINT",   "DEFSNG", "DEFDBL", "DEFSTR",
-        "DEFUSR",   "CLS",       "BEEP",     "LET",    "TIME",   "DIM",
+        "DEFUSR",   "CL",       "BEEP",     "LET",    "TIME",   "DIM",
         "REDIM",    "RANDOMIZE",
 
         "END",      "GT",      "GS",    "RT", "IF",     "FO",
         "NX",     "ON",        "INTERVAL", "STOP",
 
-        "PRINT",    "INPUT",     "SOUND",    "OUT",    "POKE",   "VPOKE",
-        "IPOKE",    "DATA",      "IDATA",    "READ",   "IREAD",  "RESTORE",
+        "PRINT",    "INPUT",     "SOUND",    "OUT",    "PK",   "VP",
+        "IPOKE",    "DT",      "IDATA",    "RD",   "IREAD",  "RESTORE",
         "IRESTORE", "RESUME",    "WAIT",     "SWAP",   "CALL",   "CMD",
         "MAXFILES", "OPEN",      "OPEN_GRP", "CLOSE",  "BLOAD",
 
-        "PLAY",     "DRAW",      "LC",   "SCREEN", "WIDTH",  "COLOR",
-        "PSET",     "PRESET",    "LINE",     "PAINT",  "CIRCLE", "COPY",
-        "PUT",      "GET",       "SET",      "KEY",    "STRIG",  "SPRITE"};
+        "PLAY",     "DRAW",      "LC",   "SN", "WIDTH",  "CR",
+        "PS",     "PRESET",    "LINE",     "PAINT",  "CIRCLE", "COPY",
+        "PU",      "GET",       "SET",      "KEY",    "SG",  "SP"};
 
     for (const auto& kw : keywords) {
       CHECK(factory.getByKeyword(kw) != nullptr);
@@ -375,14 +375,14 @@ TEST_SUITE("CompilerFunctionStrategyFactory") {
 
         "TIME",        "POS",          "LPOS",   "CSRLIN",    "INKEY",
         "INKEY$",      "MAXFILES",     "FRE",    "HEAP",      "MSX",
-        "NTSC",        "VDP",          "TURBO",  "COLLISION", "MAKER",
+        "NTSC",        "VDP",          "TURBO",  "CO", "MAKER",
         "PLYSTATUS",
 
         "INT",         "FIX",          "RND",    "SIN",       "COS",
         "TAN",         "ATN",          "EXP",    "LOG",       "SQR",
         "SGN",         "ABS",          "VAL",    "PEEK",      "IPEEK",
         "VPEEK",       "INP",          "EOF",    "PSG",       "PLAY",
-        "STICK",       "STRIG",        "PAD",    "PDL",       "BASE",
+        "STICK",       "SG",        "PAD",    "PDL",       "BASE",
 
         "ASC",         "LEN",          "CSNG",   "CDBL",      "CINT",
 
@@ -479,7 +479,7 @@ TEST_SUITE("CompilerStatementStrategies") {
         {"DEFDBL", "10 DEFDBL A-Z\n20 A=1\n30 END\n", true},
         {"DEFSTR", "10 DEFSTR A-Z\n20 A$=\"X\"\n30 END\n", true},
         {"DEFUSR", "10 DEF USR=1\n20 END\n", true},
-        {"CLS", "10 CLS\n20 END\n", true},
+        {"CL", "10 CLS\n20 END\n", true},
         {"BEEP", "10 BEEP\n20 END\n", true},
         {"LET", "10 LET A=1\n20 END\n", true},
         {"TIME", "10 TIME=1\n20 END\n", true},
@@ -500,12 +500,12 @@ TEST_SUITE("CompilerStatementStrategies") {
         {"INPUT", "10 INPUT A\n20 END\n", true},
         {"SOUND", "10 SOUND 1,2\n20 END\n", true},
         {"OUT", "10 OUT 1,2\n20 END\n", true},
-        {"POKE", "10 POKE 1,2\n20 END\n", true},
-        {"VPOKE", "10 VPOKE 1,2\n20 END\n", true},
+        {"PK", "10 POKE 1,2\n20 END\n", true},
+        {"VP", "10 VPOKE 1,2\n20 END\n", true},
         {"IPOKE", "10 IPOKE 1,2\n20 END\n", true},
-        {"DATA", "10 DATA 1,2\n20 END\n", true},
+        {"DT", "10 DATA 1,2\n20 END\n", true},
         {"IDATA", "10 IDATA 1,2\n20 END\n", true},
-        {"READ", "10 DATA 1\n20 READ A\n30 END\n", true},
+        {"RD", "10 DATA 1\n20 READ A\n30 END\n", true},
         {"IREAD", "10 IDATA 1\n20 IREAD A\n30 END\n", true},
         {"RESTORE", "10 DATA 1\n20 RESTORE\n30 END\n", true},
         {"IRESTORE", "10 IDATA 1\n20 IRESTORE\n30 END\n", true},
@@ -522,21 +522,21 @@ TEST_SUITE("CompilerStatementStrategies") {
         {"PLAY", "10 PLAY \"AB\"\n20 END\n", true},
         {"DRAW", "10 DRAW \"U1\"\n20 END\n", true},
         {"LC", "10 LOCATE 1,1\n20 END\n", true},
-        {"SCREEN", "10 SCREEN 0\n20 END\n", true},
+        {"SN", "10 SCREEN 0\n20 END\n", true},
         {"WIDTH", "10 WIDTH 40\n20 END\n", true},
-        {"COLOR", "10 COLOR 15,1,1\n20 END\n", true},
-        {"PSET", "10 PSET (1,1)\n20 END\n", true},
+        {"CR", "10 COLOR 15,1,1\n20 END\n", true},
+        {"PS", "10 PSET (1,1)\n20 END\n", true},
         {"PRESET", "10 PRESET (1,1)\n20 END\n", true},
         {"LINE", "10 LINE (0,0)-(1,1)\n20 END\n", true},
         {"PAINT", "10 PAINT (1,1),2\n20 END\n", true},
         {"CIRCLE", "10 CIRCLE (10,10),5\n20 END\n", true},
         {"COPY", "10 COPY (0,0)-(1,1) TO (2,2)\n20 END\n", true},
-        {"PUT", "10 PUT SPRITE 0,(10,10)\n20 END\n", true},
+        {"PU", "10 PUT SPRITE 0,(10,10)\n20 END\n", true},
         {"GET", "10 DEFINT A-Z\n20 GET TIME H,M,S\n30 END\n", true},
         {"SET", "10 SET SCREEN\n20 END\n", true},
         {"KEY", "10 KEY ON\n20 END\n", true},
-        {"STRIG", "10 STRIG 1,ON\n20 END\n", true},
-        {"SPRITE", "10 SPRITE ON\n20 END\n", true},
+        {"SG", "10 STRIG 1,ON\n20 END\n", true},
+        {"SP", "10 SPRITE ON\n20 END\n", true},
     };
 
     for (const auto& test_case : cases) {
@@ -699,7 +699,7 @@ TEST_SUITE("CompilerFunctionStrategies") {
         {"NTSC", "NTSC", 0, {}, false, {}, Lexeme::subtype_numeric},
         {"VDP", "VDP", 0, {}, false, {}, Lexeme::subtype_numeric},
         {"TURBO", "TURBO", 0, {}, false, {}, Lexeme::subtype_numeric},
-        {"COLLISION", "COLLISION", 0, {}, false, {}, Lexeme::subtype_numeric},
+        {"CO", "CO", 0, {}, false, {}, Lexeme::subtype_numeric},
         {"MAKER", "MAKER", 0, {}, false, {}, Lexeme::subtype_numeric},
         {"PLYSTATUS", "PLYSTATUS", 0, {}, false, {}, Lexeme::subtype_numeric},
 
@@ -851,8 +851,8 @@ TEST_SUITE("CompilerFunctionStrategies") {
          false,
          {},
          Lexeme::subtype_numeric},
-        {"STRIG",
-         "STRIG",
+        {"SG",
+         "SG",
          1,
          {Lexeme::subtype_numeric},
          false,

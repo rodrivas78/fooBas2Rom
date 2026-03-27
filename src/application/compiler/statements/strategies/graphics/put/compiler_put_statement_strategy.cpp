@@ -16,7 +16,7 @@ void CompilerPutStatementStrategy::cmd_put(
     action = context->current_action->actions[0];
     lexeme = action->lexeme;
 
-    if (lexeme->type == Lexeme::type_keyword && lexeme->value == "SPRITE") {
+    if (lexeme->type == Lexeme::type_keyword && lexeme->value == "SP") {
       context->current_action = action;
       cmd_put_sprite(context);
     } else if (lexeme->type == Lexeme::type_keyword &&

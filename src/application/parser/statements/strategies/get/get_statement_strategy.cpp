@@ -25,7 +25,7 @@ bool GetStatementStrategy::parseGetSprite(
     context->pushActionRoot(action);
 
     if (next_lexeme->type == Lexeme::type_keyword) {
-      if (next_lexeme->value == "COLOR" || next_lexeme->value == "PATTERN") {
+      if (next_lexeme->value == "CR" || next_lexeme->value == "PATTERN") {
         SetStatementStrategy strategy;
         return strategy.parseSetSpriteColpattra(context, statement);
       }
@@ -56,7 +56,7 @@ bool GetStatementStrategy::parseStatement(
         result = genericStrategy.parseStatement(context, statement);
       } else if (next_lexeme->value == "TILE") {
         result = parseGetTile(context, statement);
-      } else if (next_lexeme->value == "SPRITE") {
+      } else if (next_lexeme->value == "SP") {
         result = parseGetSprite(context, statement);
       }
     }

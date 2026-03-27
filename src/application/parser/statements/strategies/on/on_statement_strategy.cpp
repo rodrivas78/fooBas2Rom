@@ -19,13 +19,13 @@ bool OnStatementStrategy::parseOn(shared_ptr<ParserContext> context,
     } else if (next_lexeme->isKeyword("KEY")) {
       context->has_traps = true;
       return parseOnKey(context, statement);
-    } else if (next_lexeme->isKeyword("SPRITE")) {
+    } else if (next_lexeme->isKeyword("SP")) {
       context->has_traps = true;
       return parseOnSprite(context, statement);
     } else if (next_lexeme->isKeyword("STOP")) {
       context->has_traps = true;
       return parseOnStop(context, statement);
-    } else if (next_lexeme->isKeyword("STRIG")) {
+    } else if (next_lexeme->isKeyword("SG")) {
       context->has_traps = true;
       return parseOnStrig(context, statement);
     } else {
@@ -364,7 +364,7 @@ bool OnStatementStrategy::execute(shared_ptr<ParserContext> context,
   if (lexeme->value == "INTERVAL") return parseInterval(context, statement);
   if (lexeme->value == "STOP") return parseStop(context, statement);
   if (lexeme->value == "KEY") return parseKey(context, statement);
-  if (lexeme->value == "STRIG") return parseStrig(context, statement);
+  if (lexeme->value == "SG") return parseStrig(context, statement);
 
   return false;
 }

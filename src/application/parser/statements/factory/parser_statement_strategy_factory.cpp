@@ -2,7 +2,7 @@
 
 ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["REM"] = &noopStrategy;
-  strategies["CLS"] = &noopStrategy;
+  strategies["CL"] = &noopStrategy;
   strategies["END"] = &noopStrategy;
   strategies["BEEP"] = &noopStrategy;
   strategies["RANDOMIZE"] = &noopStrategy;
@@ -19,12 +19,12 @@ ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["SOUND"] = &genericStrategy;
   strategies["RESTORE"] = &genericStrategy;
   strategies["RESUME"] = &genericStrategy;
-  strategies["READ"] = &genericStrategy;
+  strategies["RD"] = &genericStrategy;
   strategies["IREAD"] = &genericStrategy;
   strategies["IRESTORE"] = &genericStrategy;
-  strategies["POKE"] = &genericStrategy;
+  strategies["PK"] = &genericStrategy;
   strategies["IPOKE"] = &genericStrategy;
-  strategies["VPOKE"] = &genericStrategy;
+  strategies["VP"] = &genericStrategy;
   strategies["OUT"] = &genericStrategy;
   strategies["SWAP"] = &genericStrategy;
   strategies["WAIT"] = &genericStrategy;
@@ -38,13 +38,13 @@ ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["PRINT"] = &printStrategy;
   strategies["?"] = &printStrategy;
   strategies["INPUT"] = &inputStrategy;
-  strategies["DATA"] = &dataStrategy;
+  strategies["DT"] = &dataStrategy;
   strategies["IDATA"] = &idataStrategy;
-  strategies["SCREEN"] = &screenStrategy;
-  strategies["SPRITE"] = &spriteStrategy;
+  strategies["SN"] = &screenStrategy;
+  strategies["SP"] = &spriteStrategy;
   strategies["BASE"] = &baseStrategy;
   strategies["VDP"] = &vdpStrategy;
-  strategies["PUT"] = &putStrategy;
+  strategies["PU"] = &putStrategy;
   strategies["TIME"] = &timeStrategy;
   strategies["SET"] = &setStrategy;
   strategies["GET"] = &getStrategy;
@@ -52,8 +52,8 @@ ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["INTERVAL"] = &onStrategy;
   strategies["STOP"] = &onStrategy;
   strategies["KEY"] = &onStrategy;
-  strategies["STRIG"] = &onStrategy;
-  strategies["COLOR"] = &colorStrategy;
+  strategies["SG"] = &onStrategy;
+  strategies["CR"] = &colorStrategy;
   strategies["CMD"] = &cmdStrategy;
   strategies["OPEN"] = &openStrategy;
   strategies["CLOSE"] = &closeStrategy;
@@ -68,7 +68,7 @@ ParserStatementStrategyFactory::ParserStatementStrategyFactory() {
   strategies["IF"] = &ifStrategy;
   strategies["FO"] = &forStrategy;
   strategies["NX"] = &nextStrategy;
-  strategies["PSET"] = &graphicsStrategy;
+  strategies["PS"] = &graphicsStrategy;
   strategies["PRESET"] = &graphicsStrategy;
   strategies["LINE"] = &graphicsStrategy;
   strategies["CIRCLE"] = &graphicsStrategy;

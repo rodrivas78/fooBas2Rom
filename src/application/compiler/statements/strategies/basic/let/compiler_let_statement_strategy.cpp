@@ -165,7 +165,7 @@ void CompilerLetStatementStrategy::cmd_let(
     // call VDP.set     ; VDP assignment (in: bc=data, hl=register)
     cpu.addCall(def_vdp_set);
 
-  } else if (lexeme->value == "SPRITE$") {
+  } else if (lexeme->value == "S$") {
     // cast
     expression.addCast(result_subtype, Lexeme::subtype_string);
 

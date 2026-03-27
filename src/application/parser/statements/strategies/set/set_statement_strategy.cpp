@@ -85,7 +85,7 @@ bool SetStatementStrategy::parseSetTile(
     context->pushActionRoot(action);
 
     if (next_lexeme->type == Lexeme::type_keyword) {
-      if (next_lexeme->value == "COLOR" || next_lexeme->value == "PATTERN" ||
+      if (next_lexeme->value == "CR" || next_lexeme->value == "PATTERN" ||
           next_lexeme->value == "FLIP" || next_lexeme->value == "ROTATE") {
         result = parseSetTileColpat(context, statement);
       } else if (next_lexeme->value == "ON" || next_lexeme->value == "OFF") {
@@ -205,7 +205,7 @@ bool SetStatementStrategy::parseSetSprite(
     context->pushActionRoot(action);
 
     if (next_lexeme->type == Lexeme::type_keyword) {
-      if (next_lexeme->value == "COLOR" || next_lexeme->value == "PATTERN" ||
+      if (next_lexeme->value == "CR" || next_lexeme->value == "PATTERN" ||
           next_lexeme->value == "FLIP" || next_lexeme->value == "ROTATE") {
         result = parseSetSpriteColpattra(context, statement);
       }
@@ -325,7 +325,7 @@ bool SetStatementStrategy::parseStatement(
     if (next_lexeme->type == Lexeme::type_keyword) {
       if (next_lexeme->value == "BEEP" || next_lexeme->value == "DATE" ||
           next_lexeme->value == "PAGE" || next_lexeme->value == "PASSWORD" ||
-          next_lexeme->value == "PROMPT" || next_lexeme->value == "SCREEN" ||
+          next_lexeme->value == "PROMPT" || next_lexeme->value == "SN" ||
           next_lexeme->value == "SCROLL" || next_lexeme->value == "TIME" ||
           next_lexeme->value == "TITLE" || next_lexeme->value == "VIDEO" ||
           next_lexeme->value == "FONT") {
@@ -335,7 +335,7 @@ bool SetStatementStrategy::parseStatement(
         result = parseSetAdjust(context, statement);
       } else if (next_lexeme->value == "TILE") {
         result = parseSetTile(context, statement);
-      } else if (next_lexeme->value == "SPRITE") {
+      } else if (next_lexeme->value == "SP") {
         result = parseSetSprite(context, statement);
       }
     }

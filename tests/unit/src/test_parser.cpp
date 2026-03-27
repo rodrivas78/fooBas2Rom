@@ -390,26 +390,26 @@ TEST_SUITE("ParserStatementStrategyFactory") {
 
     std::vector<std::string> keywords = {
 
-        "REM",    "CLS",      "END",    "BEEP",    "RANDOMIZE", "'",
+        "REM",    "CL",      "END",    "BEEP",    "RANDOMIZE", "'",
 
         "WIDTH",  "CLEAR",    "ERASE",  "LC",  "DRAW",      "GT",
-        "GS",  "RT",   "SOUND",  "RESTORE", "RESUME",    "READ",
-        "IREAD",  "IRESTORE", "POKE",   "IPOKE",   "VPOKE",     "OUT",
+        "GS",  "RT",   "SOUND",  "RESTORE", "RESUME",    "RD",
+        "IREAD",  "IRESTORE", "PK",   "IPOKE",   "VP",     "OUT",
         "SWAP",   "WAIT",     "SEED",   "BLOAD",   "PLAY",
 
         "LET",    "DIM",      "REDIM",
 
         "PRINT",  "?",        "INPUT",
 
-        "DATA",   "IDATA",
+        "DT",   "IDATA",
 
-        "SCREEN", "SPRITE",   "BASE",   "VDP",
+        "SN", "SP",   "BASE",   "VDP",
 
-        "PUT",    "TIME",     "SET",    "GET",
+        "PU",    "TIME",     "SET",    "GET",
 
-        "ON",     "INTERVAL", "STOP",   "KEY",     "STRIG",
+        "ON",     "INTERVAL", "STOP",   "KEY",     "SG",
 
-        "COLOR",  "CMD",      "OPEN",   "CLOSE",   "MAXFILES",
+        "CR",  "CMD",      "OPEN",   "CLOSE",   "MAXFILES",
 
         "CALL",   "_",
 
@@ -417,7 +417,7 @@ TEST_SUITE("ParserStatementStrategyFactory") {
 
         "IF",     "FO",      "NX",
 
-        "PSET",   "PRESET",   "LINE",   "CIRCLE",  "PAINT",     "COPY"};
+        "PS",   "PRESET",   "LINE",   "CIRCLE",  "PAINT",     "COPY"};
 
     for (const auto& kw : keywords) {
       CHECK(factory.getStrategyByKeyword(kw) != nullptr);
@@ -461,7 +461,7 @@ TEST_SUITE("ParserStatementStrategyFactory") {
     CHECK(base == factory.getStrategyByKeyword("INTERVAL"));
     CHECK(base == factory.getStrategyByKeyword("STOP"));
     CHECK(base == factory.getStrategyByKeyword("KEY"));
-    CHECK(base == factory.getStrategyByKeyword("STRIG"));
+    CHECK(base == factory.getStrategyByKeyword("SG"));
   }
 
   TEST_CASE("DEF family shares same strategy") {
@@ -479,7 +479,7 @@ TEST_SUITE("ParserStatementStrategyFactory") {
   TEST_CASE("Graphics commands share same strategy") {
     ParserStatementStrategyFactory factory;
 
-    auto* base = factory.getStrategyByKeyword("PSET");
+    auto* base = factory.getStrategyByKeyword("PS");
 
     CHECK(base != nullptr);
 
@@ -912,7 +912,7 @@ TEST_SUITE("DataStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("DATA"));
+    bool result = strategy.execute(ctx, line, kw("DT"));
 
     CHECK(result == true);
     CHECK(ctx->has_data == true);
@@ -1056,7 +1056,7 @@ TEST_SUITE("ColorStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("COLOR"));
+    bool result = strategy.execute(ctx, line, kw("CR"));
 
     CHECK(result == true);
   }
@@ -1085,7 +1085,7 @@ TEST_SUITE("SetStatementStrategy") {
     SetStatementStrategy strategy;
 
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
-    line->addLexeme(kw("SCREEN"));
+    line->addLexeme(kw("SN"));
     line->addLexeme(num("0"));
 
     line->setLexemeBOF();
@@ -1108,7 +1108,7 @@ TEST_SUITE("ScreenStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("SCREEN"));
+    bool result = strategy.execute(ctx, line, kw("SN"));
 
     CHECK(result == true);
   }
@@ -1124,7 +1124,7 @@ TEST_SUITE("SpriteStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("SPRITE"));
+    bool result = strategy.execute(ctx, line, kw("SP"));
 
     CHECK(result == true);
   }
@@ -1136,7 +1136,7 @@ TEST_SUITE("PutStatementStrategy") {
     PutStatementStrategy strategy;
 
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
-    line->addLexeme(kw("SPRITE"));
+    line->addLexeme(kw("SP"));
     line->addLexeme(num("1"));
     line->addLexeme(sep(","));
     line->addLexeme(sep(","));
@@ -1144,7 +1144,7 @@ TEST_SUITE("PutStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("PUT"));
+    bool result = strategy.execute(ctx, line, kw("PU"));
 
     CHECK(result == true);
   }
@@ -1155,7 +1155,7 @@ TEST_SUITE("GraphicsStatementStrategy") {
     shared_ptr<ParserContext> ctx = createContext();
     GraphicsStatementStrategy strategy;
 
-    setActionRoot(ctx, "PSET");
+    setActionRoot(ctx, "PS");
 
     shared_ptr<LexerLineContext> line = make_shared<LexerLineContext>();
     line->addLexeme(sep("("));
@@ -1166,7 +1166,7 @@ TEST_SUITE("GraphicsStatementStrategy") {
 
     line->setLexemeBOF();
 
-    bool result = strategy.execute(ctx, line, kw("PSET"));
+    bool result = strategy.execute(ctx, line, kw("PS"));
 
     CHECK(result == true);
   }

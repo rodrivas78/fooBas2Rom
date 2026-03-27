@@ -27,7 +27,7 @@ void CompilerSetStatementStrategy::cmd_set(
       if (next_lexeme->value == "TILE") {
         cmd_set_tile(context);
         return;
-      } else if (next_lexeme->value == "SPRITE") {
+      } else if (next_lexeme->value == "SP") {
         cmd_set_sprite(context);
         return;
       } else if (next_lexeme->value == "FONT") {
@@ -64,7 +64,7 @@ void CompilerSetStatementStrategy::cmd_set(
                next_lexeme->value == "PROMPT") {
       cmd_set_prompt(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
-               next_lexeme->value == "SCREEN") {
+               next_lexeme->value == "SN") {
       cmd_set_screen(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
                next_lexeme->value == "SCROLL") {
@@ -735,7 +735,7 @@ void CompilerSetStatementStrategy::cmd_set_tile(
             "Wrong parameters count on SET TILE PATTERN statement");
       }
 
-    } else if (lexeme->value == "COLOR") {
+    } else if (lexeme->value == "CR") {
       if (t == 2) {
         // tile number
         sub_action = action->actions[0];
@@ -1084,7 +1084,7 @@ void CompilerSetStatementStrategy::cmd_set_sprite(
             "Wrong parameters count on SET SPRITE PATTERN statement");
       }
 
-    } else if (lexeme->value == "COLOR") {
+    } else if (lexeme->value == "CR") {
       if (t == 2) {
         // sprite number
         sub_action = action->actions[0];

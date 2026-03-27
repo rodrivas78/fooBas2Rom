@@ -25,7 +25,7 @@ void CompilerGetStatementStrategy::cmd_get(
         cmd_get_time(context);
       } else if (next_lexeme->value == "TILE") {
         cmd_get_tile(context);
-      } else if (next_lexeme->value == "SPRITE") {
+      } else if (next_lexeme->value == "SP") {
         cmd_get_sprite(context);
       } else {
         context->syntaxError("Invalid GET statement");
@@ -206,7 +206,7 @@ void CompilerGetStatementStrategy::cmd_get_tile(
             "Wrong parameters count on GET TILE PATTERN statement");
       }
 
-    } else if (lexeme->value == "COLOR") {
+    } else if (lexeme->value == "CR") {
       if (t == 2) {
         // tile number
         sub_action = action->actions[0];
@@ -299,7 +299,7 @@ void CompilerGetStatementStrategy::cmd_get_sprite(
             "Wrong parameters count on GET SPRITE PATTERN statement");
       }
 
-    } else if (lexeme->value == "COLOR") {
+    } else if (lexeme->value == "CR") {
       if (t == 2) {
         // sprite number
         sub_action = action->actions[0];

@@ -12,7 +12,7 @@ int StrigCompilerFunctionStrategy::execute(shared_ptr<CompilerContext> context,
   if (!context || !action || !action->lexeme) return Lexeme::subtype_unknown;
   if (parmCount != 1) return Lexeme::subtype_unknown;
 
-  if (action->lexeme->value != "STRIG") return Lexeme::subtype_unknown;
+  if (action->lexeme->value != "SG") return Lexeme::subtype_unknown;
 
   auto& cpu = *context->cpu;
   auto& expression = *context->expressionEvaluator;

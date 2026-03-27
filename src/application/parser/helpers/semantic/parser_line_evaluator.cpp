@@ -122,7 +122,7 @@ bool ParserLineEvaluator::evaluatePhrase(shared_ptr<LexerLineContext> phrase) {
     if (lexeme->type == Lexeme::type_identifier ||
         (lexeme->type == Lexeme::type_keyword &&
          lexeme->subtype == Lexeme::subtype_function &&
-         lexeme->value != "STRIG")) {
+         lexeme->value != "SG")) {
       phrase->setLexemeBOF();
       return assignEval->evaluate(phrase);
     } else if (lexeme->type == Lexeme::type_keyword) {

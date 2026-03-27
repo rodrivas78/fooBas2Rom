@@ -50,7 +50,7 @@ void CompilerColorStatementStrategy::cmd_color(
         cpu.addEI();
         // skip:
 
-      } else if (lexeme->value == "SPRITE") {
+      } else if (lexeme->value == "SP") {
         t = action->actions.size();
 
         if (t != 2) {
@@ -80,7 +80,7 @@ void CompilerColorStatementStrategy::cmd_color(
         // call COLOR_SPRITE   ; in: b, a
         cpu.addCall(def_XBASIC_COLOR_SPRITE);
 
-      } else if (lexeme->value == "SPRITE$") {
+      } else if (lexeme->value == "S$") {
         t = action->actions.size();
 
         if (t != 2) {

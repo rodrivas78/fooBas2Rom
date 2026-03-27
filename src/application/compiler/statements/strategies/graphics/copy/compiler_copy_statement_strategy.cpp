@@ -31,7 +31,7 @@ void CompilerCopyStatementStrategy::cmd_copy(
 
       switch (state) {
         case 0: {
-          if (action->lexeme->value == "SCREEN") {
+          if (action->lexeme->value == "SN") {
             cmd_copy_screen(context);
             return;
           } else if (action->lexeme->value == "COORD") {

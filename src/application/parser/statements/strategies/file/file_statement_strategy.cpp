@@ -78,7 +78,7 @@ bool FileStatementStrategy::parseOpen(shared_ptr<ParserContext> context,
           context->popActionRoot();
           continue;
         } else if (next_lexeme->type == Lexeme::type_keyword &&
-                   (next_lexeme->value == "PUT" ||
+                   (next_lexeme->value == "PU" ||
                     next_lexeme->value == "END")) {
           continue;
         } else if (next_lexeme->value == "AS") {

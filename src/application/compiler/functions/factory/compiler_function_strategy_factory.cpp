@@ -21,7 +21,7 @@ CompilerFunctionStrategyFactory::CompilerFunctionStrategyFactory() {
   strategies["NTSC"] = &ntscStrategy;
   strategies["VDP"] = &vdpStrategy;
   strategies["TURBO"] = &turboStrategy;
-  strategies["COLLISION"] = &collisionStrategy;
+  strategies["CO"] = &collisionStrategy;
   strategies["MAKER"] = &makerStrategy;
   strategies["PLYSTATUS"] = &plystatusStrategy;
 
@@ -46,7 +46,7 @@ CompilerFunctionStrategyFactory::CompilerFunctionStrategyFactory() {
   strategies["PSG"] = &psgStrategy;
   strategies["PLAY"] = &playStrategy;
   strategies["STICK"] = &stickStrategy;
-  strategies["STRIG"] = &strigStrategy;
+  strategies["SG"] = &strigStrategy;
   strategies["PAD"] = &padStrategy;
   strategies["PDL"] = &pdlStrategy;
   strategies["BASE"] = &baseStrategy;

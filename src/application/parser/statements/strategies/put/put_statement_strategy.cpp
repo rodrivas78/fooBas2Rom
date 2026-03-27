@@ -304,7 +304,7 @@ bool PutStatementStrategy::parseStatement(
       action = make_shared<ActionNode>(next_lexeme);
       context->pushActionRoot(action);
 
-      if (next_lexeme->value == "SPRITE") {
+      if (next_lexeme->value == "SP") {
         result = parsePutSprite(context, statement);
       } else if (next_lexeme->value == "TILE") {
         result = parsePutTile(context, statement);

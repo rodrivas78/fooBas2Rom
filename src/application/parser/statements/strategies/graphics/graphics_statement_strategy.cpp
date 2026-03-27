@@ -521,7 +521,7 @@ bool GraphicsStatementStrategy::parseCopy(
 
     switch (state) {
       case 0: {
-        if (next_lexeme->isKeyword("SCREEN")) {
+        if (next_lexeme->isKeyword("SN")) {
           context->pushActionFromLexeme(next_lexeme);
           GenericStatementStrategy genericStrategy;
           return genericStrategy.parseStatement(context, statement);
@@ -840,7 +840,7 @@ bool GraphicsStatementStrategy::parseCopy(
 bool GraphicsStatementStrategy::execute(shared_ptr<ParserContext> context,
                                         shared_ptr<LexerLineContext> statement,
                                         shared_ptr<Lexeme> lexeme) {
-  if (lexeme->value == "PSET" || lexeme->value == "PRESET")
+  if (lexeme->value == "PS" || lexeme->value == "PRESET")
     return parsePset(context, statement);
   if (lexeme->value == "LINE") return parseLine(context, statement);
   if (lexeme->value == "CIRCLE") return parseCircle(context, statement);

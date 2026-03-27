@@ -30,13 +30,13 @@ void CompilerOnStatementStrategy::cmd_on(shared_ptr<CompilerContext> context) {
                next_lexeme->value == "KEY") {
       cmd_on_key(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
-               next_lexeme->value == "SPRITE") {
+               next_lexeme->value == "SP") {
       cmd_on_sprite(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
                next_lexeme->value == "STOP") {
       cmd_on_stop(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
-               next_lexeme->value == "STRIG") {
+               next_lexeme->value == "SG") {
       cmd_on_strig(context);
     } else if (next_lexeme->type == Lexeme::type_keyword &&
                next_lexeme->value == "INDEX") {

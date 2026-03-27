@@ -139,9 +139,9 @@ bool ColorStatementStrategy::parseStatement(
   if (next_lexeme) {
     if (next_lexeme->isOperator("=")) {
       return parseColorRgb(context, statement);
-    } else if (next_lexeme->isKeyword("SPRITE")) {
+    } else if (next_lexeme->isKeyword("SP")) {
       return parseColorSprite(context, statement);
-    } else if (next_lexeme->isKeyword("SPRITE$")) {
+    } else if (next_lexeme->isKeyword("S$")) {
       return parseColorSprite(context, statement);
     } else {
       statement->getPreviousLexeme();
